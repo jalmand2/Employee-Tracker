@@ -12,3 +12,13 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 // connect to the database
+const db = mysql.createConnection(
+    {
+      host: 'localhost',
+      user: 'root',
+      password: 'rootroot',
+      database: 'company_db'
+    },
+    console.log(`Connected to the company_db database.`)
+  );
+  //Next: Query Database??
