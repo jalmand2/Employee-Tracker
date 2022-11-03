@@ -2,12 +2,7 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+The Employee Tracker is a command-line application that mimics a content management system. This interface is designed to allow you to view and interact with information on a company's employees from the terminal. To create/run this application we use Node.js, Inquirer, and MySQL. 
 
 ## Table of Contents (Optional)
 
@@ -20,13 +15,13 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+Running "npm i" should install all dependencies needed to run this application. 
 
 ## Usage
 
 Provide instructions and examples for use. Include screenshots as needed.
+To use this application, clone the repository to a local folder on your computer. Open it up in VS code and then open a terminal via the project's folder. Install dependencies by running the "npm i" command in the terminal. Once dependencies are installed, run "node server.js" to be presented with the prompt options. You will be able to scroll through the different options and select to view different data and/or update it. 
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
 
 ![alt text](assets/images/screenshot.png)
 
@@ -40,11 +35,7 @@ If you followed tutorials, include links to those here as well.
 
 ## License
 
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
-
----
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
+N/A
 
 ## Badges
 
