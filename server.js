@@ -15,6 +15,24 @@ const db = mysql.createConnection(
     console.log(`Connected to the company_db database.`)
 );
 // function addDepartment()
+function addDepartment() {
+    inquirer.prompt([
+    {
+        type: 'input',
+        message: 'What is the name of the department?',
+        name: 'newDepartment',
+    }
+    ]).then(data => {
+        db.query('INSERT INTO department SET ?', data, function(err, results) {
+            if(err) {
+                console.log(err);
+            } else {
+                console.log(`Name: ${data.name}`);
+                menu();
+            }
+        });
+    });
+}
 // function addRole()
 // function addEmployee()
 // function updateEmployeeRole()
