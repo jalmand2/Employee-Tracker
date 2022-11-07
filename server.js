@@ -20,7 +20,6 @@ function addDepartment() {
     {
         type: 'input',
         message: 'What is the name of the department?',
-        name: 'newDepartment',
     }
     ]).then(data => {
         db.query('INSERT INTO department SET ?', data, function(err, results) {
