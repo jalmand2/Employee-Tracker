@@ -20,20 +20,45 @@ function addDepartment() {
     {
         type: 'input',
         message: 'What is the name of the department?',
-    }
+        name: 'department_name',
+    },
     ]).then(data => {
         db.query('INSERT INTO department SET ?', data, function(err, results) {
             if(err) {
                 console.log(err);
             } else {
-                console.log(`Name: ${data.name}`);
-                menu();
-            }
+                console.log(`Department: "${data.department_name}" added!`);
+            } return menu();
         });
     });
 }
 // function addRole()
 // function addEmployee()
+// function addEmployee() {
+//     inquirer.prompt([
+//         {
+//         type: 'input', 
+//         message: `What is the employee's first name?`,
+//         name: 'first_name',
+//         },
+//     {
+//         type: 'input', 
+//         message: `What is the employee's last name?`,
+//         name: 'last_name',
+//     },
+//     {
+//         type: 'list', 
+//         message: `What is the employee's job title?`,
+//         choices: [
+//             '1: Sales Lead',
+//             '2: Salesperson',
+//             '3: '
+//         ]
+//         name: 'role_id',
+//     },
+//     ]
+//     )
+// }
 // function updateEmployeeRole()
 function menu() {
     inquirer.prompt([
