@@ -1,7 +1,8 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
-const cTable = require('console.table');
+const express = require('express');
 
+const app = express();
 const PORT = process.env.PORT || 3001;
 
 // connect to the database
@@ -20,7 +21,7 @@ function addDepartment() {
     {
         type: 'input',
         message: 'What is the name of the department?',
-        name: 'department_name',
+        name: 'department',
     },
     ]).then(data => {
         db.query('INSERT INTO department SET ?', data, function(err, results) {
@@ -32,8 +33,33 @@ function addDepartment() {
         });
     });
 }
-// function addRole()
-// function addEmployee()
+function addRole() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            message: 'What is the name of the role?',
+            name: 'role_name'
+        },
+        {
+            type: 'input',
+            message: 'What is the salary?',
+            name: 'salary'
+        },
+        {
+            type: 'input',
+            message: 'What is the department of the role?',
+            name: 'department_name'
+        },
+    ]).then(data => {
+        db.query('INSERT INTO role SET ?', data, function(err, results) {
+            if(err) {
+                console.log(err);
+            } else {
+                console.log(`Role: "${data.role_name}" added!`);
+            } return menu();
+        });
+    });
+}
 // function addEmployee() {
 //     inquirer.prompt([
 //         {
@@ -48,7 +74,7 @@ function addDepartment() {
 //     },
 //     {
 //         type: 'list', 
-//         message: `What is the employee's job title?`,
+//         message: `What is the employee's role?`,
 //         choices: [
 //             '1: Sales Lead',
 //             '2: Salesperson',
@@ -117,3 +143,7 @@ function menu() {
     });
 }
 menu();
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
+});
