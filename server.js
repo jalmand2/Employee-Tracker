@@ -21,7 +21,7 @@ function addDepartment() {
     {
         type: 'input',
         message: 'What is the name of the department?',
-        name: 'department',
+        name: 'department_name',
     },
     ]).then(data => {
         db.query('INSERT INTO department SET ?', data, function(err, results) {
@@ -46,9 +46,11 @@ function addRole() {
             name: 'salary'
         },
         {
-            type: 'input',
+            type: 'list',
             message: 'What is the department of the role?',
-            name: 'department_name'
+            choices: ['Engineering', 'Finance', 'Legal', 'Sales'],
+            // Google map for tables
+            name: 'department_id'
         },
     ]).then(data => {
         db.query('INSERT INTO role SET ?', data, function(err, results) {
@@ -105,7 +107,7 @@ function menu() {
     ]).then(data => {
         console.log(data);
         if (data.userChoice === 'View employees') {
-            db.query('SELECT employee.id, employee.first_name, employee.last_name, title, department_name AS department, role.salary FROM employee JOIN role ON employee.role_id = role.id JOIN department ON role.department_id = department.id', function (err, data) {
+            db.query('SELECT employee.id, employee.first_name, employee.last_name, role.role_name, department_name AS department, role.salary FROM employee JOIN role ON employee.role_id = role.id JOIN department ON role.department_id = department.id', function (err, data) {
                 if (err) {
                     console.log(err);
                 } else {
@@ -123,7 +125,7 @@ function menu() {
                 }
             });
         } else if (data.userChoice === 'View roles') {
-            db.query('Select title FROM role', function (err, data) {
+            db.query('Select role_name FROM role', function (err, data) {
                 if (err) {
                     console.log(err);
                 } else {
